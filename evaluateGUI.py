@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 """
  @file   evaluate.py
- @brief  Baseline code of simple AE-based anomaly detection used experiment in [1].
- @author Ryo Tanabe and Yohei Kawaguchi (Hitachi Ltd.)
- Copyright (C) 2019 Hitachi, Ltd. All right reserved.
- [1] Harsh Purohit, Ryo Tanabe, Kenji Ichige, Takashi Endo, Yuki Nikaido, Kaori Suefusa, and Yohei Kawaguchi, "MIMII Dataset: Sound Dataset for Malfunctioning Industrial Machine Investigation and Inspection," arXiv preprint arXiv:1909.09347, 2019.
+ 
 """
 
 ########################################################################
@@ -54,13 +51,6 @@ import numpy as np
 ########################################################################
 __versions__ = "1.0.3"
 ########################################################################
-
-########################################################################
-'''This part is for cmd test'''
-# parser = argparse.ArgumentParser()
-# parser.add_argument('--file_path', default="./dataset/0dB/fan/id_00/abnormal/00000001.wav", type=str)
-# args = parser.parse_args()
-# filepath = args.file_path
 
 ########################################################################
 # setup STD I/O
@@ -335,7 +325,7 @@ def eval():
     testresult_en.delete(0 ,'end')
 
     # load parameter yaml
-    with open("baseline.yaml") as stream:
+    with open("evaluate.yaml") as stream:
         param = yaml.safe_load(stream)
 
     # make output directory
@@ -421,7 +411,6 @@ def eval():
     plt.title('Mel spectrogram')
     plt.tight_layout()
 
-    ########################################################################414
     plt.subplot(224)
     plt.title('error score')
     plt.plot(error)
@@ -436,7 +425,7 @@ def reset():
 def show():
     global img
     global tk_img
-    with open("baseline.yaml") as stream:
+    with open("evaluate.yaml") as stream:
         param = yaml.safe_load(stream)
 
     db = os.path.split(os.path.split(os.path.split(os.path.split(os.path.split(filepath)[0])[0])[0])[0])[1]
